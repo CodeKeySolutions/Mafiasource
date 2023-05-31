@@ -55,18 +55,19 @@
                 <div id="ajaxLoaderMessages"></div>
                 <div id="message-container">
                     {% set receiver = '' %}
-                    {# lastMessage|var_dump #}
+                   
                     {% for msg in lastMessage %}
                     <div class="row cf {% if msg.receiver == true %}senderRow{% else %}receiverRow{% endif %}">
                         {{ userTagManager.write('memberMessage', msg.getId, msg.getSenderID, msg.getSenderUsername, msg.getSenderDonatorID, msg.getSenderUsernameClassName, msg.getSenderAvatar, 'True') }}{{ langs.WROTE_ON|lower }} {{ msg.getDate }}:</small><br />
                         <div class="{% if msg.getReceiver == true %}{% set receiver = msg.getSenderUsername %}senderRow{% else %}{% if receiver is empty %}{% set receiver = msg.getReceiverUsername %}{% endif %}receiverRow{% endif %}">
-                            {{ msg.getMessage|raw }}
+                            {{ msg.getMessage|raw }}  |  <a href="{{docRoot}}/game/message/report/{{msg.getId}}"> <font color="red" size='1px'>{{ langs.REPORT_MESSAGE|raw }}</font< </a>
                         </div>
+                      
                     </div>
                     {% endfor %}
                     {% if lastMessage is empty %}
                         <div id="new-msg-info" class="row">
-                            <img src="{{ staticRoot }}/foto/web/public/images/icons/cross.png" alt="" class="icon"/> {{ langs.NO_MESSAGES_INFO|raw }}
+                            <img src="{{ staticRoot }}/foto/web/public/images/icons/cross.png" alt="" class="icon"/> <a href="">{{ langs.NO_MESSAGES_INFO|raw }} </a>
                         </div>
                     {% endif %}                                                                                
                 </div>                    

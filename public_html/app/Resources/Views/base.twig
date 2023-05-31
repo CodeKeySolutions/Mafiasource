@@ -91,7 +91,7 @@
     <link rel="apple-touch-startup-image" media="(width: 1024px) and (height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="{{ staticRoot }}/web/public/images/favicon/apple-icon-180x180.png" />
     <link rel="preload" href="{{ staticRoot }}/web/public/images/bg.webp" as="image" />
     <link rel="preload" href="{{ staticRoot }}/web/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" as="style" />
-    <link rel="preload" href="{{ staticRoot }}/web/public/css/homepage.min.css" as="style" />
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sirin+Stencil&family=Quicksand:wght@300;400;500;600;700&display=swap" as="style" />
@@ -104,8 +104,9 @@
     {% endif %}
     <link rel="preload" href="{{ staticRoot }}/web/public/js/outgame.js" as="script" />
     <link rel="stylesheet" href="{{ staticRoot }}/web/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ staticRoot }}/web/public/css/homepage.min.css" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sirin+Stencil&family=Quicksand:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="{{ staticRoot}}/web/public/css/outer.css" />
     <style type="text/css">
         {% for donatorColor in statusDonatorColors.donatorColors %}
             .{{ donatorColor.getDonator|seoUrl }} {color:{{ donatorColor.getColorCode }};}
@@ -118,53 +119,47 @@
     {% block stylesheets %}{% endblock stylesheets %}
 </head>
 <body>
-    {% block header %}
-    <header id="top" class="header">
-        <div class="container cf">
-            <div class="logo"></div>
-            <nav id="menu" class="cf">
-                <ul>
-                    {% if userData is not empty and ingame  == true %} {# Notfound in /game/ #}
-                        <li><a href="{{ routing.getRouteByRouteName('news') }}">{{ langs.NEWS }}</a></li>
-                        <li><a href="{{ routing.getRouteByRouteName('information') }}">{{ langs.INFORMATION }}</a></li>
-                        <li><a href="{{ routing.getRouteByRouteName('toplist') }}">{{ langs.TOPLIST }}</a></li>
-                        <li><a href="{{ routing.getRouteByRouteName('game-forum') }}">Forum</a></li>
-                    {% else %}
-                        <li><a href="/">{{ langs.HOME }}</a></li>
-                        {% if userData is empty %}
-                            {% if not offline %}
-                                <li class="hideLargeScreen"><a href="{{ routing.getRouteByRouteName('login') }}">{{ langs.LOGIN }}</a></li>
-                                <li><a href="{{ routing.getRouteByRouteName('register') }}">{{ langs.REGISTER }}</a></li>
-                            {% endif %}
-                            <li><a href="{{ routing.getRouteByRouteName('screenshots') }}">{{ langs.SCREENSHOTS }}</a></li>
-                        {% else %}
-                            <li><a href="{{ routing.getRouteByRouteName('toplist') }}">{{ langs.TOPLIST }}</a></li>
-                            <li><a href="{{ routing.getRouteByRouteName('information') }}">{{ langs.INFORMATION }}</a></li>
-                        {% endif %}
-                        <li><a href="{{ routing.getRouteByRouteName('forum') }}">{{ langs.FORUM }}</a></li>
-                        <li class="d-lg-none"><a href="{{ routing.getRouteByRouteName('terms-and-conditions') }}">{{ langs.TERMS_AND_CONDITIONS }}</a></li>
-                        <li class="d-lg-none"><a href="{{ routing.getRouteByRouteName('privacy-policy') }}">{{ langs.PRIVACY_POLICY }}</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXEKB0RRG2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-            {% block asideLogin %}
-                {% if userData is not empty %}
-                    <div class="headUser">
-                        {{ userTagManager.write('userOutgame', userData.getId, userData.getId, userData.getUsername, userData.getDonatorID, userData.getUsernameClassName) }}
-                    </div>
-                {% elseif not offline %}
-                    <aside id="login">
-                        <form action="/login" method="POST" class="headLogin" autocomplete="off">
-                            <input type="text" name="username" placeholder="{{ langs.USERNAME }}" value="{{ username }}"/>
-                            <input type="password" name="password" placeholder="{{ langs.PASSWORD }}" value=""/>
-                            <button type="submit" name="submit_login" class="button small-1-icon"><img src="{{ staticRoot }}/foto/web/public/images/icons/monitor_go.png" width="16" height="16" class="icon" alt="{{ langs.LOGIN }}"/></button>
-                        </form>
-                    </aside>
-                {% endif %}
-            {% endblock asideLogin %}
-        </div>
-    </header>
+  gtag('config', 'G-RXEKB0RRG2');
+</script>
+    {% block header %}
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="https://static.crimefusion.com/web/public/images/header_image.png" alt="CrimeFusion text based maffia game"></a></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ routing.getRouteByRouteName('home') }}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ routing.getRouteByRouteName('register') }}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ routing.getRouteByRouteName('link-partners') }}">Linkpartner</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="{{ routing.getRouteByRouteName('login') }}">Login</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li> -->
+          <!-- <li class="nav-link col-md-11 offset-md-11 input-group">
+            Login <input type="text" class="input-group-text"><br/>
+            Password <input type="text" class="input-group-text">
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
     {% endblock header %}
 
     <section id="content">

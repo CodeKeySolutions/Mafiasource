@@ -1,0 +1,36 @@
+.bg-dark {    
+    background-color: white;
+}
+body {
+    background-image: url('https://static.crimefusion.com/web/public/images/template/template_background.png');
+
+}
+
+.text-light {
+    color: #909090 !important;
+}
+#welcomeCard {
+
+}
+#gameStats {
+ 
+    background-image: linear-gradient(to bottom right, #545454, #303030);
+    max-height: 180px;
+    width: 250px;
+    
+   
+}
+.input-group-text {
+    max-width: 126px;
+}
+#gameStats,#slider,#welcomeCard {
+    color : #909090;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+h1,h2,h3,h4{
+    font-family:'Sirin Stencil', regular;padding:0 0 7px;-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));color:#e3e3e3
+}
+p
+{
+    color:#b5b5b5}::-webkit-input-placeholder{color:#545454}:-moz-placeholder{color:#545454;opacity:1}::-moz-placeholder{color:#545454;opacity:1}:-ms-input-placeholder{color:#545454}
