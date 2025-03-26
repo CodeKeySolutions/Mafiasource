@@ -29,5 +29,8 @@ These include all images excluded in gitignore and 1 custom ckeditor(game) packa
 
 ## Donate
 Any spare crypto sent my way is greatly appreciated!
-ETH: 0x6508a7d92fF6eE978E82481C98E991D808283FE5
-BTC: bc1qcj2fr8t6feaedzmy5fxmtnyyn2qe52n2re59nc
+ETH: 0x0F2806Ac9f0271098648c81f2Ef9a1675000a4f6
+BTC: bc1qyhuvnj3djg5khganc6ppr3l78s6da57ghpx054
+LTC: LhvSYfdoBduyn6P1aafqnwNpwKyxB9YEUZ
+XRP: rnXTEwfyNEnVmiwU1Ea6rBxznGraYfxL1G
+SOL: B3seGQ4ESSsRvPHe38gnw9BmrV81PWe2TaxFCYXHd4tL
